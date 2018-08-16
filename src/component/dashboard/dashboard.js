@@ -5,19 +5,6 @@ import CategoryForm from '../category-form/category-form.js';
 import CategoryItem from '../category-item/category-item.js';
 
 
-// const CategoryList = props => {
-//   return (
-//     <Fragment>
-//       <h3>Categories</h3>
-//       <ul>
-//         {props.categories.map(category => (
-//           <CategoryItem key={category.id} category={category} />
-//         ))}
-//       </ul>
-//     </Fragment>
-//   )
-// };
-
 class Dashboard extends Component {
 
   constructor(props) {
@@ -40,7 +27,7 @@ class Dashboard extends Component {
         <h3>Categories</h3>
         <ul>
           {this.props.categories.map(category => (
-           <CategoryItem key={category.id} category={category} />
+            <CategoryItem key={category.id} category={category} />
          ))}
        </ul>
       </Fragment>

@@ -2,6 +2,7 @@ import uuid from 'uuid/v4';
 
 export const categoryCreate = category => {
   category.id = uuid();
+  category.timestamp = new Date().toLocaleTimeString();
   return {
     type: 'CATEGORY_CREATE',
     payload: category,
