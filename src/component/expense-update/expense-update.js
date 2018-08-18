@@ -19,10 +19,10 @@ class ExpenseUpdate extends Component {
   onCancel = () => this.props.onCancel();
 
   onChange = event => {
-    const val = event.target.type === "checkbox" ? event.target.checked : event.target.value;
+    const val = event.target.type === 'checkbox' ? event.target.checked : event.target.value;
 
     const changed = {
-      [event.target.name]: val
+      [event.target.name]: val,
     };
     this.setState(changed);
   };
@@ -40,7 +40,7 @@ class ExpenseUpdate extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  expenseUpdate: expense => dispatch(expenseUpdate(expense))
+  expenseUpdate: expense => dispatch(expenseUpdate(expense)),
 });
 
-export default connect(null, mapDispatchToProps)(expenseUpdate);
+export default connect(null, mapDispatchToProps)(ExpenseUpdate);

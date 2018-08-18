@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { expenseDelete, expenseUpdate } from '../../action/expense-actions.js';
 import ExpenseUpdate from '../expense-update/expense-update.js';
@@ -8,29 +8,28 @@ class ExpenseItem extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      mode: 'default'
+      redo: false,
     };
 
-    this.editMode = this.editMode.bind(this);
-    this.defaultMode = this.defaultMode.bind(this);
   }
 
-  editMode() {
-    this.setState({ mode: 'edit' });
+  redoStart = () => {
+    this.setState({redo: true});
   }
 
-  defaultMode() {
-    this.setState({ mode: 'default' });
+  redoDone = () => {
+    this.setState({redo: false});
   }
 
   render() {
 
-    if (this.state.mode === 'default') {
+    if (this.state.redo === false) {
       return (
-        <li onDoubleClick={this.editMode}>
+        <li>
           <h2>{this.props.expense.name}</h2>
           <p>Price: ${this.props.expense.price}</p>
           <button onClick={() => this.props.onRemove(this.props.expense)}>Delete</button>
+          <button onClick={this.redoStart}>Edit</button>
           <p>{this.props.expense.timestamp}</p>
         </li>
       );
@@ -38,8 +37,8 @@ class ExpenseItem extends Component {
       return (
         <ExpenseUpdate
           expense={this.props.expense}
-          onCancel={this.defaultMode}
-          onDone={this.defaultMode}
+          onCancel={this.redoDone}
+          onDone={this.redoDone}
         />
       );
     }
@@ -49,6 +48,6 @@ class ExpenseItem extends Component {
 const mapDispatchToProps = (dispatch) => ({
   onRemove: expense => dispatch(expenseDelete(expense)),
   onUpdate: expense => dispatch(expenseUpdate(expense)),
-})
+});
 
 export default connect(null, mapDispatchToProps)(ExpenseItem);

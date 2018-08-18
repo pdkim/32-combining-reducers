@@ -19,8 +19,9 @@ class ExpenseForm extends Component {
 
   onComplete = event => {
     event.preventDefault();
-    this.props.expenseCreate({ ...this.state});
-    this.setState({ ...this.defaultState });
+    let catID = this.props.category.id;
+    this.props.expenseCreate({ ...this.state, categoryID: catID });
+    this.setState({ ...this.defaultState});
   };
 
   buttonText = event => {
@@ -33,23 +34,23 @@ class ExpenseForm extends Component {
     this.setState(changed);
   };
 
-  findPrice = event => {
-    const priceFound = this.props.categories.filter(category => {
-      category.id === event.target.value;
-    });
-    if(priceFound === undefined || priceFound === null) {
-      this.setState({price: 'Unavailable'});
-    } else {
-      this.setState({price: priceFound.price});
-    }
-  }
+  // findPrice = event => {
+  //   const priceFound = this.props.categories.filter(category => {
+  //     category.id === event.target.value;
+  //   });
+  //   if(priceFound === undefined || priceFound === null) {
+  //     this.setState({price: 'Unavailable'});
+  //   } else {
+  //     this.setState({price: priceFound.price});
+  //   }
+  // }
 
 
   render() {
     return (
       <form onSubmit={this.onComplete} onChange={this.buttonText}>
         <input name="name" placeholder="Name" value={this.state.name} />
-        <input name="categoryID" placeholder="Enter Category ID" value={this.state.categoryID} onChange={this.findPrice} />
+        <input name="price" placeholder="Price" value={this.state.price} />
         <button>Submit</button>
       </form>
     );

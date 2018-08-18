@@ -10,7 +10,7 @@ class CategoryItem extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      mode: 'default'
+      mode: 'default',
     };
 
     this.editMode = this.editMode.bind(this);
@@ -32,16 +32,16 @@ class CategoryItem extends Component {
         <li onDoubleClick={this.editMode}>
           <h2>{this.props.category.name}</h2>
           <p>Budget: ${this.props.category.budget}</p>
-          <p>ID: {this.props.category.id}</p>
+          <p>Double-click to update category</p>
           <button onClick={() => this.props.onRemove(this.props.category)}>Delete</button>
           <p>{this.props.category.timestamp}</p>
           <br />
           <section>
             <h3>Fill out an expense below</h3>
-            <ExpenseForm buttonText="add category" onComplete={this.props.expenseCreate} />
+            <ExpenseForm buttonText="add category" onComplete={this.props.expenseCreate} category={this.props.category} />
             <h3>Expenses</h3>
             <ul>
-              {this.props.expenses.map(expense => (
+              {this.props.expenses.filter(expense => expense.categoryID === this.props.category.id).map(expense => (
                 <ExpenseItem key={expense.id} expense={expense} />
               ))}
             </ul>
