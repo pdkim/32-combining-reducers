@@ -1,15 +1,10 @@
 import React, {Component, Fragment} from 'react';
 import {NavLink} from 'react-router-dom';
 import {connect} from 'react-redux';
-import CategoryForm from '../category-form/category-form.js';
-import CategoryItem from '../category-item/category-item.js';
+import CategoryContainer from '../category-container/category-container.js';
 
 
 class Dashboard extends Component {
-
-  constructor(props) {
-    super(props);
-  }
 
   render() {
 
@@ -23,15 +18,9 @@ class Dashboard extends Component {
             </li>
           </ul>
         </nav>
-        <CategoryForm />
-        <h3>Categories</h3>
-        <ul>
-          {this.props.categories.map(category => (
-            <CategoryItem key={category.id} category={category} />
-         ))}
-       </ul>
+        <CategoryContainer />
       </Fragment>
-    )
+    );
   }
 }
 const mapStateToProps = state => ({

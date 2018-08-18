@@ -27,7 +27,7 @@ class CategoryForm extends Component {
     const val = event.target.type === 'checkbox' ? event.target.checked : event.target.value;
 
     const changed = {
-      [event.target.name]: val
+      [event.target.name]: val,
     };
 
     this.setState(changed);
@@ -46,7 +46,7 @@ class CategoryForm extends Component {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  categoryCreate: category => dispatch(categoryCreate(category))
+  categoryCreate: category => dispatch(categoryCreate(category)),
 });
 
 export default connect(null, mapDispatchToProps)(CategoryForm);

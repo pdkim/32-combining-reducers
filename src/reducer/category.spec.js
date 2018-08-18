@@ -6,7 +6,7 @@ let categoryTest = {
   budget: '$1',
 };
 
-describe('This reducer should', () => {
+xdescribe('This reducer should', () => {
 
   it('add a new category', () => {
     const newCategory = reducer([], actions.categoryCreate(categoryTest));

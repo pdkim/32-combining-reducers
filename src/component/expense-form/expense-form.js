@@ -27,7 +27,7 @@ class ExpenseForm extends Component {
     const val = event.target.type === 'checkbox' ? event.target.checked : event.target.value;
 
     const changed = {
-      [event.target.name]: val
+      [event.target.name]: val,
     };
 
     this.setState(changed);
@@ -36,7 +36,7 @@ class ExpenseForm extends Component {
   findPrice = event => {
     const priceFound = this.props.categories.filter(category => {
       category.id === event.target.value;
-    })
+    });
     if(priceFound === undefined || priceFound === null) {
       this.setState({price: 'Unavailable'});
     } else {
@@ -49,7 +49,7 @@ class ExpenseForm extends Component {
     return (
       <form onSubmit={this.onComplete} onChange={this.buttonText}>
         <input name="name" placeholder="Name" value={this.state.name} />
-        <input name="categoryID" placeholder="Enter Category ID" value={this.state.categoryID} onChange={this.findPrice} />>
+        <input name="categoryID" placeholder="Enter Category ID" value={this.state.categoryID} onChange={this.findPrice} />
         <button>Submit</button>
       </form>
     );

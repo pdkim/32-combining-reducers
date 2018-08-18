@@ -1,4 +1,1 @@
-export default {
-  categories: [],
-  expenses: [],
-};
+export default [];

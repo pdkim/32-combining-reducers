@@ -45,13 +45,13 @@ class CategoryItem extends Component {
             onCancel={this.defaultMode}
             onDone={this.defaultMode}
           />
-          <ExpenseForm />
-          <h3>Categories</h3>
+          {/* <ExpenseForm />
+          <h3>Expenses</h3>
           <ul>
             {this.props.expenses.map(expense => (
               <ExpenseItem key={expense.id} expense={expense} />
             ))}
-          </ul>
+          </ul> */}
         </Fragment>
       );
     }
