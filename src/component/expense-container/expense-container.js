@@ -8,7 +8,7 @@ import ExpenseItem from '../category-item/category-item.js';
 const ExpenseContainer = (props) => {
   return (
     <section>
-      <h2>Fill out an expense below</h2>
+      <h3>Fill out an expense below</h3>
       <ExpenseForm buttonText="add category" state={props.expenses} onComplete={props.expenseCreate} />
       <h3>Expenses</h3>
       <ul>

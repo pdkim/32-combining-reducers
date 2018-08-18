@@ -35,6 +35,17 @@ class CategoryItem extends Component {
           <p>ID: {this.props.category.id}</p>
           <button onClick={() => this.props.onRemove(this.props.category)}>Delete</button>
           <p>{this.props.category.timestamp}</p>
+          <br />
+          <section>
+            <h3>Fill out an expense below</h3>
+            <ExpenseForm buttonText="add category" onComplete={this.props.expenseCreate} />
+            <h3>Expenses</h3>
+            <ul>
+              {this.props.expenses.map(expense => (
+                <ExpenseItem key={expense.id} expense={expense} />
+              ))}
+            </ul>
+          </section>
         </li>
       );
     } else {
@@ -45,22 +56,18 @@ class CategoryItem extends Component {
             onCancel={this.defaultMode}
             onDone={this.defaultMode}
           />
-          {/* <ExpenseForm />
-          <h3>Expenses</h3>
-          <ul>
-            {this.props.expenses.map(expense => (
-              <ExpenseItem key={expense.id} expense={expense} />
-            ))}
-          </ul> */}
         </Fragment>
       );
     }
   }
 }
 
+const mapStateToProps = (state) => ({ expenses: state.expensesState });
+
+
 const mapDispatchToProps = (dispatch) => ({
   onRemove: category => dispatch(categoryDelete(category)),
   onUpdate: category => dispatch(categoryUpdate(category)),
 })
 
-export default connect(null, mapDispatchToProps)(CategoryItem);
+export default connect(mapStateToProps, mapDispatchToProps)(CategoryItem);

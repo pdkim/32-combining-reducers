@@ -9,7 +9,7 @@ const CategoryContainer = (props) => {
   return (
     <section>
       <h2>Categories</h2>
-      <CategoryForm buttonText="add category" state={props.categories} onComplete={props.categoryCreate} />
+      <CategoryForm buttonText="add category" onComplete={props.categoryCreate} />
       <h3>Categories</h3>
       <ul>
         {props.categories.map(category => (
